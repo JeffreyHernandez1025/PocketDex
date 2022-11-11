@@ -80,7 +80,7 @@ export default function Update() {
                         paddingBottom: 5,
                     }}
                     to='/add-pokemon'>
-                        New Pokemon
+                        Add
                         </Link>
                 </NavigationButtons>
             </NavigationContainer>

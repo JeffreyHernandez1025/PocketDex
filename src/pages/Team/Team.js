@@ -80,7 +80,7 @@ export default function Team() {
                         paddingBottom: 5,
                     }}
                     to='/add-pokemon'>
-                        New Pokemon
+                        Add
                         </Link>
                 </NavigationButtons>
             </NavigationContainer>
