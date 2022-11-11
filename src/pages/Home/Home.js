@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import PokemonEntry from "../../components/PokemonEntry/pokemonEntry"
+import useAllPokemon from "../../hooks/useAllPokemon";
 const NavigationContainer = styled.div`
 justify-content: space-evenly;
 display: flex;
@@ -24,9 +25,8 @@ text-align: center;
 
 const PageWrapper = styled.div`
   width: 100vw;
-  height: 100vh;
   position: absolute;
-  top: 0;
+  top: 100;
   left: 0;
   display: flex;
   justify-content: flex-start;
@@ -35,7 +35,7 @@ const PageWrapper = styled.div`
 `;
 
 export default function Home() {
-    const { allPokemon, deletePokemon, isDeleting, updatePokemon } = useAllPokemon();
+    const { allPokemon } = useAllPokemon();
     return (
         <div>
             <NavigationContainer>
@@ -96,8 +96,9 @@ export default function Home() {
                         </Link>
                 </NavigationButtons>
             </NavigationContainer>
+       
+        <Header> Pokemon </Header> 
         <PageWrapper>
-        <Header> Pokemon </Header>
         {allPokemon.map((pokemon, i) => (
           <PokemonEntry
             _id={pokemon._id}

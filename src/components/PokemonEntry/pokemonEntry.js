@@ -1,22 +1,18 @@
 import styled from "styled-components";
 import { useState } from "react";
-import upDatePokemonEntry from "../../api/updatePokemonEntry"
+import updatePokemonEntry from "../../api/updatePokemonEntry"
 const ScoreWrapper = styled.div`
-  background-color: #fff;
+  background-color: blue;
   border-radius: 4px;
   padding: 0.5rem 0.5rem;
   text-align: center;
   width: 275px;
   height: 70px;
-  margin-bottom: 100px;
+  margin-bottom: 50px;
   opacity: 0.75;
   transition: all ease-in-out 300ms;
   p {
     margin: 0;
-  }
-
-  p:nth-child(1) {
-    margin-bottom: 15px;
   }
 
   &:hover {

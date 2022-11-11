@@ -1,5 +1,5 @@
 import { useState } from "react";
-import addPokemon from "../api/addPokemonEntry";
+import addPokemon from "../api/addPokemon";
 
 export default function useAddPokemon() {
     // data for new pokemon
