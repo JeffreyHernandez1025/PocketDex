@@ -21,13 +21,30 @@ const ScoreWrapper = styled.div`
   }
 `;
 
-export default function ScoreCard(props) {
+const Select = styled.button`
+
+
+&:hover {
+  cursor: pointer;
+}
+`;
+
+export default function PokemonEntry(props) {
+  const [isSelected, setIsSelected] = useState(false)
     return (
         <ScoreWrapper>
             <p>{props.name}</p>
             <p>{props.description}</p>
             <p>{props.type}</p>
             <p>{props.region}</p>
+            <Select onClick={() => {
+              console.log("hit selected")
+              if(isSelected === false){
+                setIsSelected(true)
+              } else {
+                setIsSelected(false)
+              }
+            }}> {isSelected === true ? "selected" : "select"} </Select>
         </ScoreWrapper>
     )
 }
