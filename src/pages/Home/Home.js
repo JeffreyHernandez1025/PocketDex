@@ -35,7 +35,7 @@ const PageWrapper = styled.div`
 `;
 
 export default function Home() {
-    const { allPokemon } = useAllPokemon();
+    const { allPokemon, teamPokemon } = useAllPokemon();
     return (
         <div>
             <NavigationContainer>
@@ -107,6 +107,7 @@ export default function Home() {
             type={pokemon.type}
             region={pokemon.region}
             key={i}
+            teamPokemon={teamPokemon}
           />
         ))}
       </PageWrapper>

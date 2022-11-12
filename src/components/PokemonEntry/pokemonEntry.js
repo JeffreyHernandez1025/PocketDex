@@ -44,39 +44,29 @@ const Select = styled.button`
 `;
 
 export default function PokemonEntry(props) {
-  const [isSelected, setIsSelected] = useState(false)
 
-  const { 
-    teamPokemon,
-    selectedId,
-    setSelectedId, } = useCreateTeam()
+  function inTeam(id) {
+ 
+    console.log(id)
 
-    function inTeam(id){
-      id = selectedId
-      console.log(selectedId)
+    props.teamPokemon(id)
+  }
 
-      teamPokemon(id)
-      }
-
-    return (
-        <PokemonWrapper>
-            <p>{props.name}</p>
-            <p>{props.description}</p>
-            <p>{props.type}</p>
-            <p>{props.region}</p>
-            <button onClick={() => {
-              console.log("hit selected")
-                setIsSelected(true)
-                setSelectedId(props._id)
-                console.log(selectedId)
-                inTeam()
-            }}> select </button>
-            <button onClick={() => {
-              console.log('deselect hit')
-              setIsSelected(false)
-            }}> deselect </button>
-        </PokemonWrapper>
-    )
+  return (
+    <PokemonWrapper>
+      <p>{props.name}</p>
+      <p>{props.description}</p>
+      <p>{props.type}</p>
+      <p>{props.region}</p>
+      <button onClick={() => {
+        console.log("hit selected")
+        inTeam(props._id)
+      }}> select </button>
+      <button onClick={() => {
+        console.log('deselect hit')
+      }}> deselect </button>
+    </PokemonWrapper>
+  )
 }
 
 

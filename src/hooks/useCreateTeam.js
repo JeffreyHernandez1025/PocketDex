@@ -10,8 +10,8 @@ export default function useCreateTeam() {
             const response = await createTeam(id)
             console.log("added to team successfully")
             console.log(response.data.payload)
-            setSelectedPokemon(response.data.payload)
-            console.log(selectedPokemon)
+            setSelectedPokemon( [...selectedPokemon, response.data.payload])
+            console.log([...selectedPokemon, response.data.payload])
         }catch(e){
             console.log(e)
         }

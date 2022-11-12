@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import getPokemon from "../api/getPokemon"
 import deletePokemonEntry from "../api/deletePokemonEntry";
+import createTeam from "../api/createTeam";
 
 export default function useAllPokemon() {
     const [allPokemon, setAllPokemon] = useState([]);
     const [isDeleting, setIsDeleting] = useState([]);
+    const [starterSix, setStarterSix] = useState([])
 
     useEffect(() => {
         console.log("test")
@@ -35,10 +37,24 @@ export default function useAllPokemon() {
           setIsDeleting(false);
         }
       };
-    
+
+    const teamPokemon = async (id) => {
+        try{
+            const response = await createTeam(id)
+            console.log("added to team successfully")
+            console.log(response.data.payload)
+            setStarterSix([...starterSix, {}])
+            console.log('help')
+            console.log([...starterSix, response.data.payload])
+        }catch(e){
+            console.log(e)
+        }
+    }
+
     return{
         allPokemon,
         deletePokemons,
         isDeleting,
+        teamPokemon
     }
 }
