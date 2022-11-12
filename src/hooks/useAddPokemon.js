@@ -11,8 +11,8 @@ export default function useAddPokemon() {
     const addNewPokemon = async (name, description, type, region) => {
         try{
             const response = await addPokemon(name, description, type, region)
-            console.log(response)
             console.log('successfully added')
+            console.log(response)
         }catch(e){
             console.log(e)
         }

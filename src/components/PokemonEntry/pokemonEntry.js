@@ -1,6 +1,6 @@
 import styled from "styled-components";
+import useCreateTeam from "../../hooks/useCreateTeam";
 import { useState } from "react";
-import updatePokemonEntry from "../../api/updatePokemonEntry"
 const ScoreWrapper = styled.div`
   background-color: blue;
   border-radius: 4px;
@@ -21,8 +21,9 @@ const ScoreWrapper = styled.div`
   }
 `;
 
-const Select = styled.button`
-
+const Selecting = styled.button`
+margin-left: 10px;
+margin-right: 10px;
 
 &:hover {
   cursor: pointer;
@@ -31,20 +32,36 @@ const Select = styled.button`
 
 export default function PokemonEntry(props) {
   const [isSelected, setIsSelected] = useState(false)
+
+  const { 
+    teamPokemon,
+    selectedId,
+    setSelectedId, } = useCreateTeam()
+
+    function inTeam(id){
+      id = selectedId
+      console.log(selectedId)
+
+      teamPokemon(id)
+      }
+
     return (
         <ScoreWrapper>
             <p>{props.name}</p>
             <p>{props.description}</p>
             <p>{props.type}</p>
             <p>{props.region}</p>
-            <Select onClick={() => {
+            <Selecting onClick={() => {
               console.log("hit selected")
-              if(isSelected === false){
                 setIsSelected(true)
-              } else {
-                setIsSelected(false)
-              }
-            }}> {isSelected === true ? "selected" : "select"} </Select>
+                setSelectedId(props._id)
+                console.log(selectedId)
+                inTeam()
+            }}> select </Selecting>
+            <Selecting onClick={() => {
+              console.log('deselect hit')
+              setIsSelected(false)
+            }}> deselect </Selecting>
         </ScoreWrapper>
     )
 }

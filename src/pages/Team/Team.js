@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import useAllPokemon from "../../hooks/useAllPokemon";
 
 const NavigationContainer = styled.div`
 justify-content: space-evenly;
@@ -23,6 +24,7 @@ text-align: center;
 `;
 
 export default function Team() {
+    const { allPokemon } = useAllPokemon()
 
     return(
         <div>
@@ -85,6 +87,7 @@ export default function Team() {
                 </NavigationButtons>
             </NavigationContainer>
             <Header> Team </Header>
+
         </div>
     )
 }
