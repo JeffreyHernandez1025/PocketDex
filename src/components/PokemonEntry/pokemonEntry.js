@@ -1,7 +1,9 @@
 import styled from "styled-components";
 import useCreateTeam from "../../hooks/useCreateTeam";
 import { useState } from "react";
-const ScoreWrapper = styled.div`
+import deletePokemons from "../../hooks/deletePokemon"
+import updatePokemonEntry from "../../api/updatePokemonEntry"
+const PokemonWrapper = styled.div`
   background-color: blue;
   border-radius: 4px;
   padding: 0.5rem 0.5rem;
@@ -21,9 +23,21 @@ const ScoreWrapper = styled.div`
   }
 `;
 
-const Selecting = styled.button`
-margin-left: 10px;
-margin-right: 10px;
+const DeleteButton = styled.button`
+  color: #fff;
+  background-color: red;
+  border-radius: 4px;
+  padding: 0.5rem 0.5rem;
+  outline: none;
+  border-color: red;
+  border-style: solid;
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
+const Select = styled.button`
+
 
 &:hover {
   cursor: pointer;
@@ -51,17 +65,17 @@ export default function PokemonEntry(props) {
             <p>{props.description}</p>
             <p>{props.type}</p>
             <p>{props.region}</p>
-            <Selecting onClick={() => {
+            <button onClick={() => {
               console.log("hit selected")
                 setIsSelected(true)
                 setSelectedId(props._id)
                 console.log(selectedId)
                 inTeam()
-            }}> select </Selecting>
-            <Selecting onClick={() => {
+            }}> select </button>
+            <button onClick={() => {
               console.log('deselect hit')
               setIsSelected(false)
-            }}> deselect </Selecting>
+            }}> deselect </button>
         </ScoreWrapper>
     )
 }
