@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import useCreateTeam from "../../hooks/useCreateTeam";
 import { useState } from "react";
-import deletePokemons from "../../hooks/deletePokemon"
 import updatePokemonEntry from "../../api/updatePokemonEntry"
 const PokemonWrapper = styled.div`
   background-color: blue;
@@ -60,7 +59,7 @@ export default function PokemonEntry(props) {
       }
 
     return (
-        <ScoreWrapper>
+        <PokemonWrapper>
             <p>{props.name}</p>
             <p>{props.description}</p>
             <p>{props.type}</p>
@@ -76,7 +75,7 @@ export default function PokemonEntry(props) {
               console.log('deselect hit')
               setIsSelected(false)
             }}> deselect </button>
-        </ScoreWrapper>
+        </PokemonWrapper>
     )
 }
 

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import getPokemon from "../api/getPokemon"
+import deletePokemonEntry from "../api/deletePokemonEntry";
 
 export default function useAllPokemon() {
     const [allPokemon, setAllPokemon] = useState([]);
@@ -21,8 +22,23 @@ export default function useAllPokemon() {
 
         fetchData()
     }, [])
+
+    const deletePokemons = async (id) => {
+        try {
+          setIsDeleting(true);
+          await deletePokemonEntry(id);
+          setAllPokemon(allPokemon.filter((pokemon) => pokemon._id !== id));
+          console.log("success, we delete the score");
+          setIsDeleting(false);
+        } catch (e) {
+          console.log(e);
+          setIsDeleting(false);
+        }
+      };
     
     return{
         allPokemon,
+        deletePokemons,
+        isDeleting,
     }
 }
