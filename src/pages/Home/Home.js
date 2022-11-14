@@ -7,16 +7,34 @@ justify-content: space-evenly;
 display: flex;
 flex-direction: row;
 background-color: blue;
+height: 100px;
 padding-top: 5px
 `;
 
 const NavigationButtons = styled.div`
+width: 150px;
+height: 50px;
 background-color: red;
 border: solid;
 border-color: white;
 border-width: 2px;
 border-radius: 7px;
 margin-bottom: 5px;
+`;
+
+const TeamHeader = styled.h1`
+text-align: center;
+`;
+
+const TeamContainer = styled.div`
+text-align: center;
+`;
+
+const TeamDiv = styled.div`
+display: flex;
+text-align: center;
+flex-direction: column;
+
 `;
 
 const Header = styled.h1`
@@ -68,49 +86,54 @@ export default function Home() {
                     </Link>
                 </NavigationButtons>
                 <NavigationButtons>
-                    <Link 
-                    style={{
-                        color: 'white',
-                        textDecoration: 'none',
-                        paddingLeft: 10,
-                        paddingRight: 10,
-                        paddingTop: 5,
-                        paddingBottom: 5,
-                    }}
-                    to='/update-pokemon'>
+                    <Link
+                        style={{
+                            color: 'white',
+                            textDecoration: 'none',
+                            paddingLeft: 10,
+                            paddingRight: 10,
+                            paddingTop: 5,
+                            paddingBottom: 5,
+                        }}
+                        to='/update-pokemon'>
                         Update
-                        </Link>
+                    </Link>
                 </NavigationButtons>
                 <NavigationButtons>
-                    <Link 
-                    style={{
-                        color: 'white',
-                        textDecoration: 'none',
-                        paddingLeft: 10,
-                        paddingRight: 10,
-                        paddingTop: 5,
-                        paddingBottom: 5,
-                    }}
-                    to='/add-pokemon'>
+                    <Link
+                        style={{
+                            color: 'white',
+                            textDecoration: 'none',
+                            paddingLeft: 10,
+                            paddingRight: 10,
+                            paddingTop: 5,
+                            paddingBottom: 5,
+                        }}
+                        to='/add-pokemon'>
                         Add
-                        </Link>
+                    </Link>
                 </NavigationButtons>
             </NavigationContainer>
-       
-        <Header> Pokemon </Header> 
-        <PageWrapper>
-        {allPokemon.map((pokemon, i) => (
-          <PokemonEntry
-            _id={pokemon._id}
-            name={pokemon.name}
-            description={pokemon.description}
-            type={pokemon.type}
-            region={pokemon.region}
-            key={i}
-            teamPokemon={teamPokemon}
-          />
-        ))}
-      </PageWrapper>
+            <TeamContainer>
+                <TeamHeader>Team</TeamHeader>
+                <TeamDiv>
+
+                </TeamDiv>
+            </TeamContainer>
+            <Header> Pokemon </Header>
+            <PageWrapper>
+                {allPokemon.map((pokemon, i) => (
+                    <PokemonEntry
+                        _id={pokemon._id}
+                        name={pokemon.name}
+                        description={pokemon.description}
+                        type={pokemon.type}
+                        region={pokemon.region}
+                        key={i}
+                        teamPokemon={teamPokemon}
+                    />
+                ))}
+            </PageWrapper>
         </div>
 
     )
