@@ -11,12 +11,17 @@ padding-top: 5px
 `;
 
 const NavigationButtons = styled.div`
+width: 150px;
+height: 50px;
 background-color: red;
 border: solid;
 border-color: white;
 border-width: 2px;
 border-radius: 7px;
-margin-bottom: 5px;
+margin-top: 15px;
+display: flex;
+justify-content: center;
+
 `;
 
 const Header = styled.h1`
@@ -52,7 +57,6 @@ export default function Add() {
     } = useAddPokemon()
 
     const handleSubmit = event => {
-        console.log('hit submit')
         event.preventDefault();
 
         setAddName('')
@@ -80,54 +84,27 @@ export default function Add() {
                         style={{
                             color: 'white',
                             textDecoration: 'none',
-                            paddingLeft: 10,
-                            paddingRight: 10,
-                            paddingTop: 5,
-                            paddingBottom: 5,
+                            textAlign: 'center',
+                            flex: 1,
+                            borderRadius: 7,
+                            paddingTop: 12,
                         }}
                         to='/'>
                         Home
                     </Link>
                 </NavigationButtons>
+                <h1>PocketDex</h1> 
                 <NavigationButtons>
                     <Link
                         style={{
                             color: 'white',
                             textDecoration: 'none',
-                            paddingLeft: 10,
-                            paddingRight: 10,
-                            paddingTop: 5,
-                            paddingBottom: 5,
+                            textAlign: 'center',
+                            flex: 1,
+                            borderRadius: 7,
+                            paddingTop: 12,
                         }}
-                        to='/team'>
-                        Team
-                    </Link>
-                </NavigationButtons>
-                <NavigationButtons>
-                    <Link
-                        style={{
-                            color: 'white',
-                            textDecoration: 'none',
-                            paddingLeft: 10,
-                            paddingRight: 10,
-                            paddingTop: 5,
-                            paddingBottom: 5,
-                        }}
-                        to='/update-pokemon'>
-                        Update
-                    </Link>
-                </NavigationButtons>
-                <NavigationButtons>
-                    <Link
-                        style={{
-                            color: 'white',
-                            textDecoration: 'none',
-                            paddingLeft: 10,
-                            paddingRight: 10,
-                            paddingTop: 5,
-                            paddingBottom: 5,
-                        }}
-                        to='/add-pokemon'>
+                        to='/add'>
                         Add
                     </Link>
                 </NavigationButtons>

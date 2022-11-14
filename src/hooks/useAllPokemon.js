@@ -5,17 +5,14 @@ import createTeam from "../api/createTeam";
 
 export default function useAllPokemon() {
     const [allPokemon, setAllPokemon] = useState([]);
-    const [isDeleting, setIsDeleting] = useState([]);
     const [starterSix, setStarterSix] = useState([])
 
+
     useEffect(() => {
-        console.log("test")
 
         async function fetchData() {
             try {
                 const data = await getPokemon()
-                console.log("success")
-                console.log(data)
                 setAllPokemon(data.data.payload)
             } catch (e) {
                 console.log(e)
@@ -25,24 +22,18 @@ export default function useAllPokemon() {
         fetchData()
     }, [])
 
-    const deletePokemons = async (id) => {
+    const deletePokemon = async (id) => {
         try {
-          setIsDeleting(true);
           await deletePokemonEntry(id);
           setAllPokemon(allPokemon.filter((pokemon) => pokemon._id !== id));
-          console.log("success, we delete the score");
-          setIsDeleting(false);
         } catch (e) {
           console.log(e);
-          setIsDeleting(false);
         }
       };
 
     const teamPokemon = async (id) => {
         try{
             const response = await createTeam(id)
-            console.log("added to team successfully")
-            console.log(response.data.payload)
             // check if the new pokemon alread y is in list
             const i = starterSix.map(starter => starter._id).indexOf(response.data.payload._id);
 
@@ -59,8 +50,8 @@ export default function useAllPokemon() {
 
     return{
         allPokemon,
-        deletePokemons,
-        isDeleting,
+        setAllPokemon,
+        deletePokemon,
         teamPokemon,
         starterSix,
         deselectPokemon,

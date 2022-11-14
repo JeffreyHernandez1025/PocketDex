@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import PokemonEntry from "../../components/PokemonEntry/pokemonEntry"
+import PokemonEntry from "../../components/PokemonEntry/PokemonEntry"
+import StarterEntry from "../../components/StarterEntry/StarterEntry";
 import useAllPokemon from "../../hooks/useAllPokemon";
+import useUpdatePokemon from "../../hooks/useUpdatePokemon";
+
 const NavigationContainer = styled.div`
 justify-content: space-evenly;
 display: flex;
@@ -19,7 +22,10 @@ border: solid;
 border-color: white;
 border-width: 2px;
 border-radius: 7px;
-margin-bottom: 5px;
+margin-top: 15px;
+display: flex;
+justify-content: center;
+
 `;
 
 const TeamHeader = styled.h1`
@@ -27,14 +33,13 @@ text-align: center;
 `;
 
 const TeamContainer = styled.div`
-text-align: center;
-`;
-
-const TeamDiv = styled.div`
+width: 100vw;
+top: 100;
+left: 0;
 display: flex;
-text-align: center;
+justify-content: flex-start;
 flex-direction: column;
-
+align-items: center;
 `;
 
 const Header = styled.h1`
@@ -53,9 +58,29 @@ const PageWrapper = styled.div`
 `;
 
 export default function Home() {
-    const { allPokemon, teamPokemon, starterSix, deselectPokemon } = useAllPokemon();
-
-console.log(starterSix)
+    const { 
+        allPokemon, 
+        teamPokemon, 
+        starterSix, 
+        deselectPokemon, 
+        setAllPokemon,
+        deletePokemon,
+    } = useAllPokemon();
+    const { 
+        pokeId, 
+        setPokeId, 
+        pokeEdit, 
+        isUpdating, 
+        setIsUpdating, 
+        pokeName, 
+        setPokeName, 
+        pokeDesc,
+        setPokeDesc,
+        pokeType,
+        setPokeType,
+        pokeRegion,
+        setPokeRegion
+    } = useUpdatePokemon()
 
     return (
         <div>
@@ -65,63 +90,43 @@ console.log(starterSix)
                         style={{
                             color: 'white',
                             textDecoration: 'none',
-                            paddingLeft: 10,
-                            paddingRight: 10,
-                            paddingTop: 5,
-                            paddingBottom: 5,
+                            textAlign: 'center',
+                            flex: 1,
+                            borderRadius: 7,
+                            paddingTop: 12,
                         }}
                         to='/'>
                         Home
                     </Link>
                 </NavigationButtons>
+                <h1>PocketDex</h1>
                 <NavigationButtons>
                     <Link
                         style={{
                             color: 'white',
                             textDecoration: 'none',
-                            paddingLeft: 10,
-                            paddingRight: 10,
-                            paddingTop: 5,
-                            paddingBottom: 5,
+                            textAlign: 'center',
+                            flex: 1,
+                            borderRadius: 7,
+                            paddingTop: 12,
                         }}
-                        to='/team'>
-                        Team
-                    </Link>
-                </NavigationButtons>
-                <NavigationButtons>
-                    <Link
-                        style={{
-                            color: 'white',
-                            textDecoration: 'none',
-                            paddingLeft: 10,
-                            paddingRight: 10,
-                            paddingTop: 5,
-                            paddingBottom: 5,
-                        }}
-                        to='/update-pokemon'>
-                        Update
-                    </Link>
-                </NavigationButtons>
-                <NavigationButtons>
-                    <Link
-                        style={{
-                            color: 'white',
-                            textDecoration: 'none',
-                            paddingLeft: 10,
-                            paddingRight: 10,
-                            paddingTop: 5,
-                            paddingBottom: 5,
-                        }}
-                        to='/add-pokemon'>
+                        to='/add'>
                         Add
                     </Link>
                 </NavigationButtons>
             </NavigationContainer>
+            <TeamHeader>Team</TeamHeader>
             <TeamContainer>
-                <TeamHeader>Team</TeamHeader>
-                <TeamDiv>
-
-                </TeamDiv>
+                {starterSix.map((starter, i) => (
+                    <StarterEntry
+                        _id={starter._id}
+                        name={starter.name}
+                        description={starter.description}
+                        type={starter.type}
+                        region={starter.region}
+                        key={i}
+                    />
+                ))}
             </TeamContainer>
             <Header> Pokemon </Header>
             <PageWrapper>
@@ -132,8 +137,26 @@ console.log(starterSix)
                         description={pokemon.description}
                         type={pokemon.type}
                         region={pokemon.region}
-                        key={i}
+                        allPokemon={allPokemon}
+                        setAllPokemon={setAllPokemon}
                         teamPokemon={teamPokemon}
+                        deselectPokemon={deselectPokemon}
+                        starterSix={starterSix}
+                        pokeId={pokeId}
+                        setPokeId={setPokeId}
+                        pokeEdit={pokeEdit}
+                        isUpdating={isUpdating}
+                        setIsUpdating={setIsUpdating}
+                        pokeName={pokeName}
+                        setPokeName={setPokeName}
+                        pokeDesc={pokeDesc}
+                        setPokeDesc={setPokeDesc}
+                        pokeType={pokeType}
+                        setPokeType={setPokeType}
+                        pokeRegion={pokeRegion}
+                        setPokeRegion={setPokeRegion}
+                        deletePokemon={deletePokemon}
+                        key={i}
                     />
                 ))}
             </PageWrapper>
