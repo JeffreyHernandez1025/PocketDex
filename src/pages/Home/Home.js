@@ -117,24 +117,6 @@ console.log(starterSix)
                     </Link>
                 </NavigationButtons>
             </NavigationContainer>
-<<<<<<< HEAD
-       
-        <Header> Pokemon </Header> 
-        <PageWrapper>
-        {allPokemon.map((pokemon, i) => (
-          <PokemonEntry
-            _id={pokemon._id}
-            name={pokemon.name}
-            description={pokemon.description}
-            type={pokemon.type}
-            region={pokemon.region}
-            key={i}
-            teamPokemon={teamPokemon}
-            deselectPokemon ={deselectPokemon}
-          />
-        ))}
-      </PageWrapper>
-=======
             <TeamContainer>
                 <TeamHeader>Team</TeamHeader>
                 <TeamDiv>
@@ -155,7 +137,6 @@ console.log(starterSix)
                     />
                 ))}
             </PageWrapper>
->>>>>>> 29c3265d067d2a8f86e86152e4740f4d12e659c1
         </div>
 
     )
