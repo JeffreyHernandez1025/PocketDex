@@ -43,18 +43,26 @@ export default function useAllPokemon() {
             const response = await createTeam(id)
             console.log("added to team successfully")
             console.log(response.data.payload)
-            setStarterSix([...starterSix, {}])
-            console.log('help')
-            console.log([...starterSix, response.data.payload])
+            // check if the new pokemon alread y is in list
+            const i = starterSix.map(starter => starter._id).indexOf(response.data.payload._id);
+
+            if(i === -1 && starterSix.length < 6){
+                setStarterSix([...starterSix, response.data.payload])
+            }
         }catch(e){
             console.log(e)
         }
+    }
+    function deselectPokemon(id) {
+        setStarterSix(starterSix.filter((p) => p._id !== id))
     }
 
     return{
         allPokemon,
         deletePokemons,
         isDeleting,
-        teamPokemon
+        teamPokemon,
+        starterSix,
+        deselectPokemon,
     }
 }

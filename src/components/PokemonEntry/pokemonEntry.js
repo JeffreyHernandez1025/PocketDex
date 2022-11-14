@@ -52,6 +52,12 @@ export default function PokemonEntry(props) {
     props.teamPokemon(id)
   }
 
+  function outTeam(id) {
+    console.log(id)
+
+    props.deselectPokemon(id)
+  }
+
   return (
     <PokemonWrapper>
       <p>{props.name}</p>
@@ -64,6 +70,7 @@ export default function PokemonEntry(props) {
       }}> select </button>
       <button onClick={() => {
         console.log('deselect hit')
+        outTeam(props._id)
       }}> deselect </button>
     </PokemonWrapper>
   )
