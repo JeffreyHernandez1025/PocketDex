@@ -46,6 +46,8 @@ export default function Add() {
     // object destructuring
     const {
         addNewPokemon,
+        addPoke,
+        setAddPoke,
         addName,
         setAddName,
         addDesc,
@@ -59,6 +61,7 @@ export default function Add() {
     const handleSubmit = event => {
         event.preventDefault();
 
+        setAddPoke('')
         setAddName('')
         setAddDesc('')
         setAddType('')
@@ -67,13 +70,14 @@ export default function Add() {
         submitAdd()
     }
 
-    function submitAdd(name, description, type, region) {
+    function submitAdd(pokemon, name, description, type, region) {
+        pokemon = addPoke
         name = addName
         description = addDesc
         type = addType
         region = addRegion
 
-        addNewPokemon(name, description, type, region)
+        addNewPokemon(pokemon, name, description, type, region)
     }
 
     return (
@@ -111,6 +115,16 @@ export default function Add() {
             </NavigationContainer>
             <Header> Add New Pokemon </Header>
             <Form onSubmit={handleSubmit}>
+                <label> image address: </label>
+                <Input> 
+                <input 
+                id="add_Poke"
+                name="add_Poke"
+                type="text"
+                onChange={event => setAddPoke(event.target.value)}
+                value={addPoke}
+                />
+                </Input>
                 <label>name:</label>
                 <Input>
             <input
@@ -151,7 +165,7 @@ export default function Add() {
                   value={addRegion}
                 />
                 </Input>
-                <button type='submit'> Add </button>
+                <button to='/' type='submit'> Add </button>
             </Form>
         </div>
     )

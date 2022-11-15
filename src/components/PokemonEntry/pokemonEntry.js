@@ -7,7 +7,7 @@ const PokemonWrapper = styled.div`
   padding: 0.5rem 0.5rem;
   text-align: center;
   width: 275px;
-  height: 70px;
+  height: 400px;
   margin-bottom: 50px;
   opacity: 0.75;
   transition: all ease-in-out 300ms;
@@ -27,6 +27,11 @@ const Select = styled.button`
 &:hover {
   cursor: pointer;
 }
+`;
+
+const Pokemon = styled.img`
+height: 200px;
+
 `;
 
 export default function PokemonEntry(props) {
@@ -67,6 +72,7 @@ export default function PokemonEntry(props) {
 
   return (
     <PokemonWrapper>
+      <Pokemon src={props.pokemon} />
       <p>{props.name}</p>
       <p>{props.description}</p>
       <p>{props.type}</p>

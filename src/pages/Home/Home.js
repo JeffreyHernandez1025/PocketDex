@@ -53,7 +53,7 @@ const PageWrapper = styled.div`
   left: 0;
   display: flex;
   justify-content: flex-start;
-  flex-direction: column;
+  flex-direction: column-reverse;
   align-items: center;
 `;
 
@@ -120,6 +120,7 @@ export default function Home() {
                 {starterSix.map((starter, i) => (
                     <StarterEntry
                         _id={starter._id}
+                        pokemon={starter.pokemon}
                         name={starter.name}
                         description={starter.description}
                         type={starter.type}
@@ -133,6 +134,7 @@ export default function Home() {
                 {allPokemon.map((pokemon, i) => (
                     <PokemonEntry
                         _id={pokemon._id}
+                        pokemon={pokemon.pokemon}
                         name={pokemon.name}
                         description={pokemon.description}
                         type={pokemon.type}

@@ -7,9 +7,10 @@ import { API_URL } from "../constants";
  */
 
 
-export default function addPokemon(name, description, type, region) {
+export default function addPokemon(pokemon, name, description, type, region) {
   const url = API_URL + "/add-pokemon-entry";
   return axios.post(url, {
+    pokemon: pokemon,
     name: name, 
     description: description, 
     type: type, 
