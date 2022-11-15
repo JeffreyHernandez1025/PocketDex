@@ -107,7 +107,7 @@ export default function PokemonEntry(props) {
             id="poke_Name"
             name="poke_Name"
             type="text"
-            onChange={event => props.setPokeId(event.target.value)}
+            onChange={event => props.setPokeName(event.target.value)}
             value={props.pokeName}
           />
           <textarea
