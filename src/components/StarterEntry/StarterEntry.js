@@ -4,12 +4,16 @@ const PokemonWrapper = styled.div`
   background-color: blue;
   border-radius: 4px;
   padding: 0.5rem 0.5rem;
-  text-align: center;
-  width: 275px;
-  height: 310px;
-  margin-bottom: 50px;
+  width: 300px;
+  height: 250px;
+  margin-right: 50px;
+  margin-left: 50px;
   opacity: 0.75;
   transition: all ease-in-out 300ms;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+
   p {
     margin: 0;
   }
@@ -29,10 +33,6 @@ export default function StarterEntry(props) {
   return (
     <PokemonWrapper>
       <Pokemon src={props.pokemon} />
-      <p>{props.name}</p>
-      <p>{props.description}</p>
-      <p>{props.type}</p>
-      <p>{props.region}</p>
     </PokemonWrapper>
   )
 }

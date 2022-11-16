@@ -11,7 +11,7 @@ display: flex;
 flex-direction: row;
 background-color: blue;
 height: 100px;
-padding-top: 5px
+padding-top: 5px;
 `;
 
 const NavigationButtons = styled.div`
@@ -33,13 +33,14 @@ text-align: center;
 `;
 
 const TeamContainer = styled.div`
-width: 100vw;
 top: 100;
-left: 0;
-display: flex;
-justify-content: flex-start;
-flex-direction: column;
+left: 0px;
 align-items: center;
+display: flex;
+flex-direction: row;
+flex-wrap: wrap;
+flex: 1;
+justify-content: center;
 `;
 
 const Header = styled.h1`
@@ -47,14 +48,15 @@ text-align: center;
 `;
 
 const PageWrapper = styled.div`
-  width: 100vw;
-  position: absolute;
+  width: 100%;
   top: 100;
   left: 0;
   display: flex;
   justify-content: flex-start;
-  flex-direction: column-reverse;
+  flex-wrap: wrap;
   align-items: center;
+  flex: 1;
+  justify-content: center;
 `;
 
 export default function Home() {
@@ -132,6 +134,7 @@ export default function Home() {
             <Header> Pokemon </Header>
             <PageWrapper>
                 {allPokemon.map((pokemon, i) => (
+                    <div>
                     <PokemonEntry
                         _id={pokemon._id}
                         pokemon={pokemon.pokemon}
@@ -160,6 +163,7 @@ export default function Home() {
                         deletePokemon={deletePokemon}
                         key={i}
                     />
+                    </div>
                 ))}
             </PageWrapper>
         </div>

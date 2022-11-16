@@ -3,6 +3,7 @@ import React from "react";
 import { BrowserRouter, Routes, Route,Navigate } from "react-router-dom";
 import Home from "./pages/Home/Home"
 import Add from "./pages/Add/Add"
+import PokeInfo from "./pages/PokeInfo/PokeInfo";
 
 /**
  * Renders react router
@@ -15,6 +16,7 @@ export default function App() {
         <Routes>
           <Route index element={<Home />} />
           <Route path="/add" element={<Add />} />
+          <Route path="/poke-info" element={<PokeInfo />} />
           <Route path="*" element={<Navigate to="" />} />
         </Routes>
       </BrowserRouter>
