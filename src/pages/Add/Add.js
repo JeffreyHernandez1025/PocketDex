@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import useAddPokemon from "../../hooks/useAddPokemon";
+import pokemonspace from "../../assets/fonts/PokemonImages/pokemon_space.png"
+import pokemonforest from "../../assets/fonts/PokemonImages/Vermilion_Forest.png"
+import pokemonpattern from "../../assets/fonts/PokemonImages/pokemonpattern.png"
+import sky from "../../assets/fonts/PokemonImages/sky.png"
 
 const NavigationContainer = styled.div`
 justify-content: space-evenly;
@@ -13,10 +17,10 @@ padding-top: 5px
 const NavigationButtons = styled.div`
 width: 150px;
 height: 50px;
-background-color: red;
+background-color: red;  
 border: solid;
-border-color: white;
-border-width: 2px;
+border-color: marron;
+border-width: 1px;
 border-radius: 7px;
 margin-top: 15px;
 display: flex;
@@ -26,20 +30,45 @@ justify-content: center;
 
 const Header = styled.h1`
 text-align: center;
+
 `;
 
 const Form = styled.form`
+background-color: white;
 display: flex;
 flex-direction: column;
-background-color: blue;
 margin-left: 20px;
 margin-right: 20px;
-border: solid;
-border-color: red;
+margin-top: 10px;
 border-radius: 10px;
+align-items: center;
+width: 400px;
+height: 600px;
 `;
+
 const Input = styled.div`
 padding-bottom: 50px;
+`;
+
+const AddContainer = styled.div`
+flex: 1;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-direction: column;
+background-image: url(${pokemonforest});
+height: 100%;
+background-repeat: no-repeat;
+padding-bottom: 154px;
+`;
+
+const LabelDiv = styled.div`
+margin-top: 8px;
+border-radius: 5px;
+border-width: 1px;
+background-color: white;
+border-color: grey;
+padding: 2px;
 `;
 
 export default function Add() {
@@ -81,7 +110,7 @@ export default function Add() {
     }
 
     return (
-        <div>
+        <div style={{overflow: 'hidden'}}>
             <NavigationContainer>
                 <NavigationButtons>
                     <Link
@@ -113,9 +142,12 @@ export default function Add() {
                     </Link>
                 </NavigationButtons>
             </NavigationContainer>
+            <AddContainer>
             <Header> Add New Pokemon </Header>
             <Form onSubmit={handleSubmit}>
-                <label> image address: </label>
+                <LabelDiv>
+                <label> Image URL: </label>
+                </LabelDiv>
                 <Input> 
                 <input 
                 id="add_Poke"
@@ -125,7 +157,9 @@ export default function Add() {
                 value={addPoke}
                 />
                 </Input>
-                <label>name:</label>
+                <LabelDiv>
+                <label>Name:</label>
+                </LabelDiv>
                 <Input>
             <input
                   id="add_Name"
@@ -135,7 +169,9 @@ export default function Add() {
                   value={addName}
                 />
                 </Input>
-                <label>description:</label>
+                <LabelDiv>
+                <label>Description:</label>
+                </LabelDiv>
                 <Input>
                 <textarea
                   id="add_Desc"
@@ -145,7 +181,9 @@ export default function Add() {
                   value={addDesc}
                 />
                 </Input>
-                <label>type:</label>
+                <LabelDiv>
+                <label>Type:</label>
+                </LabelDiv>
                 <Input>
                 <input
                   id="add_Type"
@@ -155,7 +193,9 @@ export default function Add() {
                   value={addType}
                 />
                 </Input>
-                <label>region:</label>
+                <LabelDiv>
+                <label>Region:</label>
+                </LabelDiv>
                 <Input>
                 <input
                   id="add_Region"
@@ -165,8 +205,9 @@ export default function Add() {
                   value={addRegion}
                 />
                 </Input>
-                <button to='/' type='submit'> Add </button>
+                <button style={{width: 100, height: 30}} to='/' type='submit'> Add </button>
             </Form>
-        </div>
+            </AddContainer>
+            </div>
     )
 }
