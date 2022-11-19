@@ -35,7 +35,8 @@ display: flex;
 justify-content: center;
 
 @media (max-width: 500px){
-width: 100px;
+width: 50px;
+hieght: 15px;
 }
 
 `;
