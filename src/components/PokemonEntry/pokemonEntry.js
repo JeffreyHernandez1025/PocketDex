@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { useState } from "react";
+import React from 'react'
 
 const PokemonWrapper = styled.div`
   background-color:#e8ebd8;

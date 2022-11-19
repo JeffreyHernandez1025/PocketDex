@@ -1,9 +1,14 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import PokemonEntry from "../../components/PokemonEntry/PokemonEntry"
+import PokemonEntry from "../../components/PokemonEntry/pokemonEntry"
 import StarterEntry from "../../components/StarterEntry/StarterEntry";
 import useAllPokemon from "../../hooks/useAllPokemon";
 import useUpdatePokemon from "../../hooks/useUpdatePokemon";
+import PlaySound from "../../components/PlaySound/PlaySound";
+import Sound from 'react-sound';
+import PokemonTheme from "../../assets/fonts/PokemonAudio/PokemonTheme.mp3"
+import React from 'react'
+
 
 
 
@@ -156,6 +161,7 @@ export default function Home() {
             </TeamContainer>
             <Header> Pokemon </Header>
             <PageWrapper>
+                <PlaySound/>
                 {allPokemon.map((pokemon, i) => (
                     <div>
                     <PokemonEntry
