@@ -5,6 +5,9 @@ import StarterEntry from "../../components/StarterEntry/StarterEntry";
 import useAllPokemon from "../../hooks/useAllPokemon";
 import useUpdatePokemon from "../../hooks/useUpdatePokemon";
 
+
+
+
 const NavigationContainer = styled.div`
 justify-content: space-evenly;
 display: flex;
@@ -26,10 +29,25 @@ margin-top: 15px;
 display: flex;
 justify-content: center;
 
+@media (max-width: 500px){
+width: 100px;
+}
+
+`;
+
+const NavHeader = styled.h1`
+
+@media (max-width: 500px){
+    font-size: 30px
+}
 `;
 
 const TeamHeader = styled.h1`
 text-align: center;
+
+@media (max-width: 500px) {
+    font-size: 25px;
+}
 `;
 
 const TeamContainer = styled.div`
@@ -41,10 +59,15 @@ flex-direction: row;
 flex-wrap: wrap;
 flex: 1;
 justify-content: center;
+
 `;
 
 const Header = styled.h1`
 text-align: center;
+
+@media (max-width: 500px) {
+    font-size: 25px;
+}
 `;
 
 const PageWrapper = styled.div`
@@ -101,7 +124,7 @@ export default function Home() {
                         Home
                     </Link>
                 </NavigationButtons>
-                <h1>PocketDex</h1>
+                <NavHeader>PocketDex</NavHeader>
                 <NavigationButtons>
                     <Link
                         style={{

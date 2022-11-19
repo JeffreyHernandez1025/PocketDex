@@ -1,21 +1,20 @@
 import styled from "styled-components";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 const PokemonWrapper = styled.div`
-  background-color: blue;
+  background-color:#e8ebd8;
   border-radius: 4px;
   padding: 0.5rem 0.5rem;
-  width: 175px;
-  height: 300px;
+  width: 400px;
+  height: 200px;
   margin-bottom: 50px;
-  opacity: 0.75;
   transition: all ease-in-out 300ms;
   margin-left: 50px;
   margin-right: 50px;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  flex-direction: row;
 
   p {
     margin: 0;
@@ -23,8 +22,13 @@ const PokemonWrapper = styled.div`
 
   &:hover {
     cursor: default;
-    opacity: 1;
   }
+
+  @media (max-width: 500px) {
+    margin-right: 0px;
+    margin-left: 0px;
+  }
+
 `;
 
 const Button = styled.button`
@@ -38,29 +42,38 @@ const Button = styled.button`
 const Pokemon = styled.img`
 height: 150px;
 bottom: 50px;
-background-color: white;
 border-style: solid;
+border-width: 1px
 
 `;
 
 const Buttons = styled.div`
 text-align: center;
-
 `;
 
 const PokeInfo = styled.div`
 text-align: center;
+width: 200px;
+display: flex;
+flex-direction: column;
+flex-wrap: wrap;
+margin-left: 25px;
 `
 const DataType = styled.div`
 display: flex;
+margin-bottom: 15px;
 `
-const DataName = styled.p`
-margin-right: 10px;
+const Form = styled.form`
+
+margin-right: 40px;
+display: flex;
+flex-direction: column;
+
+
 `
 
 export default function PokemonEntry(props) {
   const [selected, setSelected] = useState(false)
-  const navigate = useNavigate()
 
   function inTeam(id) {
     props.teamPokemon(id)
@@ -94,9 +107,8 @@ export default function PokemonEntry(props) {
 
     props.pokeEdit(id, name, description, type, region)
   }
-
   return (
-    <div>
+    <div style={{display: props.isUpdating === true ? 'flex' : null, flexDirection: props.isUpdating === true ? 'column-reverse' : null }}>
                 <Buttons>
           {props.isUpdating === true ? null :
             <Button onClick={() => {
@@ -123,7 +135,7 @@ export default function PokemonEntry(props) {
               props.setIsUpdating(true)
             }} > update </Button>}
           {props.isUpdating === true ?
-            <form onSubmit={handleSubmit}>
+            <Form onSubmit={handleSubmit}>
               <input
                 id="poke_Name"
                 name="poke_Name"
@@ -153,22 +165,28 @@ export default function PokemonEntry(props) {
                 value={props.pokeRegion}
               />
               <button type="submit"> Done </button>
-            </form> : null}
+            </Form> 
+            : null}
           {props.isUpdating === true ? null :
             <Button onClick={() => {
               props.deletePokemon(props._id)
             }}> delete </Button>}
             </Buttons>
+            <div>
     <PokemonWrapper>
-      <Pokemon src={props.pokemon} />
+      {props.type === 'fire' ? <Pokemon src={props.pokemon} style={{backgroundColor: '#d12121'}} />: null }
+      {props.type === 'water' ? <Pokemon src={props.pokemon} style={{backgroundColor: '#3297a8'}} /> : null}
+      {props.type === 'grass' ? <Pokemon src={props.pokemon} style={{backgroundColor: '#40a832'}} /> : null}
       <PokeInfo> 
       <DataType>
         <p style={{marginRight: 10}}> Name: </p>
       <p> {props.name} </p>
       </DataType>
-      <div>
+      <div style={{marginBottom: 15, display: 'flex', flexDirection: 'column', alignItems: 'flex-start', }}>
         <p> Description: </p>
-      <p style={{backgroundColor: 'white', borderRadius: 10,}}> {props.description} </p>
+        <div style={{ backgroundColor: 'grey', borderRadius: 10, paddingLeft: 10, paddingRight: 10, paddingTop: 5, paddingBottom: 5 }}>
+      <p style={{ fontSize: 13 }}> {props.description} </p>
+      </div>
       </div>
       <DataType>
         <p style={{marginRight: 10}}> Type: </p>
@@ -180,6 +198,7 @@ export default function PokemonEntry(props) {
       </DataType>
       </PokeInfo>
     </PokemonWrapper>
+    </div>
             </div>
   )
 }

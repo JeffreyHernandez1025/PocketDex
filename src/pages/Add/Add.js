@@ -1,10 +1,7 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import useAddPokemon from "../../hooks/useAddPokemon";
-import pokemonspace from "../../assets/fonts/PokemonImages/pokemon_space.png"
-import pokemonforest from "../../assets/fonts/PokemonImages/Vermilion_Forest.png"
-import pokemonpattern from "../../assets/fonts/PokemonImages/pokemonpattern.png"
-import sky from "../../assets/fonts/PokemonImages/sky.png"
+import pokemonforest from "../../assets/PokemonImages/Vermilion_Forest.png"
 
 const NavigationContainer = styled.div`
 justify-content: space-evenly;
@@ -19,18 +16,32 @@ width: 150px;
 height: 50px;
 background-color: red;  
 border: solid;
-border-color: marron;
-border-width: 1px;
+border-color: white;
+border-width: 2px;
 border-radius: 7px;
 margin-top: 15px;
 display: flex;
 justify-content: center;
 
+@media (max-width: 500px){
+    width: 100px;
+    }
+    
 `;
+
+const NavHeader = styled.h1`
+
+@media (max-width: 500px){
+    font-size: 30px;
+}
+`
 
 const Header = styled.h1`
 text-align: center;
 
+@media (max-width: 500px) {
+    font-size: 25px;
+}
 `;
 
 const Form = styled.form`
@@ -126,7 +137,7 @@ export default function Add() {
                         Home
                     </Link>
                 </NavigationButtons>
-                <h1>PocketDex</h1> 
+                <NavHeader>PocketDex</NavHeader> 
                 <NavigationButtons>
                     <Link
                         style={{
