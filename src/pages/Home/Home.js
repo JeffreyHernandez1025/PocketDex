@@ -145,6 +145,9 @@ export default function Home() {
                     </Link>
                 </NavigationButtons>
             </NavigationContainer>
+            <div style={{alignSelf: 'flex-end', position: 'absolute', top: 0, right: 0, marginTop: 30, marginRight: 10}}>
+                <PlaySound/>
+                </div>
             <TeamHeader>Team</TeamHeader>
             <TeamContainer>
                 {starterSix.map((starter, i) => (
@@ -161,7 +164,6 @@ export default function Home() {
             </TeamContainer>
             <Header> Pokemon </Header>
             <PageWrapper>
-                <PlaySound/>
                 {allPokemon.map((pokemon, i) => (
                     <div>
                     <PokemonEntry
